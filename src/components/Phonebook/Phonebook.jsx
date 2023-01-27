@@ -9,7 +9,7 @@ import { FormikForm } from './Form/Form'
 import { Contacts } from './Contacts/Contacts'
 import { PhonebookWrapper } from './Phonebook.styled'
 import { useDispatch, useSelector } from 'react-redux'
-import { addingNewContact, getContactsValueFromRedux } from 'redux/contactsSlice/contactsSlice'
+import { addingNewContact } from 'redux/contactsSlice/contactsSlice'
 
 export const Phonebook = () => {
 

@@ -23,7 +23,7 @@ export const Phonebook = () => {
     // fetching default array of contacts from initialState of contactSlice
     // const randomArrayOfNames = useSelector(state => state.contacts);
 
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
 
   console.log(contacts)
 
@@ -63,20 +63,20 @@ export const Phonebook = () => {
 
 // !!!!!  
   
-  Object.filter = (obj, predicate) => 
-    Object.keys(obj)
-          .filter( key => predicate(obj[key]) )
-          .reduce( (res, key) => Object.assign(res, { [key]: obj[key] }), [] )
+  // Object.filter = (obj, predicate) => 
+  //   Object.keys(obj)
+  //         .filter( key => predicate(obj[key]) )
+  //         .reduce( (res, key) => Object.assign(res, { [key]: obj[key] }), [] )
   
-  const filtered = Object.filter(contacts, contact => contact.id !== undefined); 
-  console.log(filtered);
+  // const filtered = Object.filter(contacts, contact => contact.id !== undefined); 
+  // console.log(filtered);
   
 
     const updatePhoneBookList = (newContactName) => {
         console.log(newContactName)
         
         // checking if this contact new or exists in the phonebook
-        const foundDuplicate = filtered.find(contact => contact.name === newContactName.name)
+        const foundDuplicate = contacts.find(contact => contact.name === newContactName.name)
         if (foundDuplicate) {
             alert(`Open your eyes, ${newContactName.name} is already in your phonebook!`)
         return}
@@ -114,7 +114,7 @@ export const Phonebook = () => {
 
   
  
-     const filteredContacts = filtered.filter(contact => 
+     const filteredContacts = contacts.filter(contact => 
             contact.name.toLowerCase().includes(filterLowered)
      )
   

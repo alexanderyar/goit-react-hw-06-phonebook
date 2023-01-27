@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import {
   persistReducer,
   persistStore,
@@ -15,7 +16,6 @@ import {
  import { contactsSlice } from "./contactsSlice/contactsSlice";
 import { filterSlice } from "./filterSlice/filterSlice";
 
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 // config for redux-persist;
 const persistConfig = {

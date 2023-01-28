@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import { FormikForm } from './Form/Form'
 import { Contacts } from './Contacts/Contacts'
 import { PhonebookWrapper } from './Phonebook.styled'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 export const Phonebook = () => {
@@ -99,7 +99,7 @@ export const Phonebook = () => {
 
     
     // now lowered filter get it's value from redux
-  const filterLowered = useSelector(state => state.filter).toLowerCase()
+  // const filterLowered = useSelector(state => state.filter).toLowerCase()
   // console.log(filterLowered)
 
   // turning object with contacts that persist returns into array (in order to to use with map)

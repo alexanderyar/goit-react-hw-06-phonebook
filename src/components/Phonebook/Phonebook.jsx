@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 // import { useEffect } from 'react'
 
 
-import { nanoid } from 'nanoid'
+
 
 import { FormikForm } from './Form/Form'
 import { Contacts } from './Contacts/Contacts'
 import { PhonebookWrapper } from './Phonebook.styled'
 import { useDispatch, useSelector } from 'react-redux'
-import { addingNewContact } from 'redux/contactsSlice/contactsSlice'
+
 
 export const Phonebook = () => {
 
@@ -27,7 +27,7 @@ export const Phonebook = () => {
 
   console.log(contacts)
 
-  const dispatch = useDispatch();
+ 
   
  
 
@@ -106,9 +106,7 @@ export const Phonebook = () => {
 
   
  
-     const filteredContacts = contacts.filter(contact => 
-            contact.name.toLowerCase().includes(filterLowered)
-     )
+  
   
 
 

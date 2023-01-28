@@ -3,21 +3,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Filter } from './Filter/Filter'
 import { ListWrapper } from './Contacts.styled'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deletingChosenContact } from 'redux/contactsSlice/contactsSlice'
 
 
 
 
 
-export const Contacts = ({ contacts }) => {
+export const Contacts = () => {
 
-const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    const contacts = useSelector(state => state.contacts.contacts);
+    const filterLowered = useSelector(state => state.filter).toLowerCase()
+
+    const filteredContacts = contacts.filter(contact => 
+            contact.name.toLowerCase().includes(filterLowered)
+     )
 
     // refactored. now onDelete click has been transferred from Phonebook component. dispatch is used instead of useState to delete (using filter) chosen contact
  const onDeleteClick = (id) => {
-        
-     dispatch(deletingChosenContact(id))
+        console.log(id)
+     dispatch(deletingChosenContact(id));
  }
   
     
@@ -26,7 +33,7 @@ const dispatch = useDispatch()
             <h2>Contacts</h2>
             <Filter />
             <ListWrapper>
-                {contacts.map(({ name, id, number }) => (
+                {filteredContacts.map(({ name, id, number }) => (
                     <li key={id}><p>{name}: {number}</p><button type="button" onClick={() => onDeleteClick(id)}>Delete this bastard</button></li>
          
                 ))}

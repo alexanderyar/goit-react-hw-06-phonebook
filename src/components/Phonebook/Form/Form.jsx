@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ButtonStyled, FormStyled, Input } from './Form.styled';
 import { Formik } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addingNewContact } from 'redux/contactsSlice/contactsSlice';
 
 
 
@@ -14,15 +17,33 @@ const initialValues = {
     number: ''
 }
    
-export const FormikForm = ({ handleSubmit, onSubmit }) => {
+export const FormikForm = ({ handleSubmit }) => {
+
+    const contacts = useSelector(state => state.contacts.contacts)
+    const dispatch = useDispatch();
     
      
+const updatePhoneBookList = (newContactName) => {
+        console.log(newContactName)
+        
+        // checking if this contact new or exists in the phonebook
+        const foundDuplicate = contacts.find(contact => contact.name === newContactName.name)
+        if (foundDuplicate) {
+            alert(`Open your eyes, ${newContactName.name} is already in your phonebook!`)
+        return}
+        // adding new contact name
+        const contactNew = { ...newContactName, id: nanoid() }
+        console.log(contactNew)
 
+        dispatch(addingNewContact(contactNew))
+}
+    
+    
 handleSubmit = (values, {resetForm}) => {
         
     console.log(values)
    
-         onSubmit(values)   
+         updatePhoneBookList(values)   
         resetForm();
         
 }

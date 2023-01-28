@@ -61,31 +61,23 @@ export const Phonebook = () => {
     // }, [contacts])
     
 
-// !!!!!  
-  
-  // Object.filter = (obj, predicate) => 
-  //   Object.keys(obj)
-  //         .filter( key => predicate(obj[key]) )
-  //         .reduce( (res, key) => Object.assign(res, { [key]: obj[key] }), [] )
-  
-  // const filtered = Object.filter(contacts, contact => contact.id !== undefined); 
-  // console.log(filtered);
+
   
 
-    const updatePhoneBookList = (newContactName) => {
-        console.log(newContactName)
+    // const updatePhoneBookList = (newContactName) => {
+    //     console.log(newContactName)
         
-        // checking if this contact new or exists in the phonebook
-        const foundDuplicate = contacts.find(contact => contact.name === newContactName.name)
-        if (foundDuplicate) {
-            alert(`Open your eyes, ${newContactName.name} is already in your phonebook!`)
-        return}
-        // adding new contact name
-        const contactNew = { ...newContactName, id: nanoid() }
-        console.log(contactNew)
+    //     // checking if this contact new or exists in the phonebook
+    //     const foundDuplicate = contacts.find(contact => contact.name === newContactName.name)
+    //     if (foundDuplicate) {
+    //         alert(`Open your eyes, ${newContactName.name} is already in your phonebook!`)
+    //     return}
+    //     // adding new contact name
+    //     const contactNew = { ...newContactName, id: nanoid() }
+    //     console.log(contactNew)
 
-        dispatch(addingNewContact(contactNew))
-    }
+    //     dispatch(addingNewContact(contactNew))
+    // }
 
 
   // used reducer in redux
@@ -132,8 +124,8 @@ export const Phonebook = () => {
     
      return (
     <PhonebookWrapper>
-    <FormikForm onSubmit={updatePhoneBookList} />
-    <Contacts contacts={filteredContacts}    />
+    <FormikForm  />
+    <Contacts     />
     </PhonebookWrapper>
     )
     

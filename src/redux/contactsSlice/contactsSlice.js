@@ -29,20 +29,14 @@ export const contactsSlice = createSlice({
     name: "contacts",
     initialState: contactsInitialState,
     reducers: {
-        // this way I return the new array of objects which dooesn't change the original array;
-        // filteringContacts(state, action) {
-        //     return state.filter(contact => contact.name.toLowerCase().includes(action.payload))
-        // },
+       
         addingNewContact(state, action) {
-            
-            //  state.contacts.unshift(action.payload)
-
-            // console.log(action.payload)
-            // console.log(state)
             state.contacts.push(action.payload)
-        },
-        deletingChosenContact(state, action) {
-            return state.contacts.filter(contact => contact.id !== action.payload)
+      },
+      
+      deletingChosenContact(state, action) {
+          // console.log(state.contacts)
+       state.contacts = state.contacts.filter(contact => contact.id !== action.payload)
         }
     }
 })
